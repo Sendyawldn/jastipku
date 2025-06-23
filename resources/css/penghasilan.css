@@ -1,0 +1,279 @@
+/* ========================================================================== */
+/* Variabel Global & Reset Dasar
+/* ========================================================================== */
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #10b981;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --gray-color: #6b7280;
+    --light-gray: #e5e7eb;
+    --danger-color: #ef4444;
+    --sidebar-width: 280px;
+}
+
+body {
+    background-color: #f5f7fa;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ========================================================================== */
+/* Sidebar Styles (KODE YANG DITAMBAHKAN)
+/* ========================================================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.profile-info {
+    text-align: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color);
+}
+
+.profile-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.profile-info p {
+    font-size: 14px;
+    color: var(--gray-color);
+    margin-bottom: 5px;
+}
+
+.sidebar .status {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sidebar .status.active {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.rating {
+    color: #f59e0b;
+    margin-top: 10px;
+}
+
+.rating span {
+    color: var(--dark-color);
+    margin-left: 5px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav li.active a {
+    background-color: #f0f5ff;
+    color: var(--primary-color);
+}
+
+.sidebar-nav i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* ========================================================================== */
+/* Struktur Utama & Layout
+/* ========================================================================== */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+}
+
+/* Styling Utama Kontainer */
+.earnings-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.earnings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.earnings-header h1 {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+}
+
+.period-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.period-btn {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.period-btn.active,
+.period-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Kartu Statistik */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--light-gray);
+}
+
+.stat-title {
+    font-size: 14px;
+    color: var(--gray-color);
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.stat-change {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-change.up {
+    color: var(--secondary-color);
+}
+
+.stat-change.down {
+    color: var(--danger-color);
+}
+
+/* Tabel Transaksi */
+.table-responsive {
+    overflow-x: auto;
+}
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.transactions-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.transactions-table td {
+    font-size: 15px;
+}
+
+.transaction-status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.status-completed {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+/* Tombol Tarik Dana */
+.withdraw-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.withdraw-btn:hover {
+    background-color: #4338ca;
+}

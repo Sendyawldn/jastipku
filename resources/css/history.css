@@ -1,0 +1,285 @@
+/* ========================================================================== */
+/* Variabel Global & Reset Dasar
+/* ========================================================================== */
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #10b981;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --gray-color: #6b7280;
+    --light-gray: #e5e7eb;
+    --danger-color: #ef4444;
+    --sidebar-width: 280px;
+}
+
+body {
+    background-color: #f5f7fa;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ========================================================================== */
+/* Sidebar Styles
+/* ========================================================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.profile-info {
+    text-align: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color);
+}
+
+.profile-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.profile-info p {
+    font-size: 14px;
+    color: var(--gray-color);
+    margin-bottom: 5px;
+}
+
+.sidebar .status {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sidebar .status.active {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.rating {
+    color: #f59e0b;
+    margin-top: 10px;
+}
+
+.rating span {
+    color: var(--dark-color);
+    margin-left: 5px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav li.active a {
+    background-color: #f0f5ff;
+    color: var(--primary-color);
+}
+
+.sidebar-nav i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* ========================================================================== */
+/* Struktur Utama & Layout (KODE PERBAIKAN)
+/* ========================================================================== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* FIX: Hanya target .main-content yang merupakan anak langsung dari .dashboard-container */
+.dashboard-container > .main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+}
+
+/* ========================================================================== */
+/* Kontainer & Header Halaman Riwayat
+/* ========================================================================== */
+.history-traveller-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.history-traveller-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    font-size: 24px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.history-traveller-header p {
+    color: var(--gray-color);
+    font-size: 1em;
+}
+
+/* ========================================================================== */
+/* Daftar Pesanan & Kartu
+/* ========================================================================== */
+.traveller-order-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.traveller-order-card {
+    background-color: #ffffff;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.traveller-order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.traveller-order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.traveller-order-card-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.order-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: white;
+}
+
+/* Warna Status */
+.status-selesai {
+    background-color: var(--primary-color);
+}
+.status-dibatalkan {
+    background-color: var(--danger-color);
+}
+
+.traveller-order-card-body {
+    font-size: 0.95em;
+    color: var(--gray-color);
+    flex-grow: 1;
+}
+
+.traveller-order-card-body p {
+    margin-bottom: 8px;
+}
+
+.traveller-order-card-body strong {
+    color: var(--dark-color);
+    margin-right: 5px;
+}
+
+.traveller-order-card-actions {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-detail {
+    background-color: #f0f5ff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-detail:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ========================================================================== */
+/* Tampilan Kosong (Empty State)
+/* ========================================================================== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    margin-top: 30px;
+    color: var(--gray-color);
+    grid-column: 1 / -1;
+}
+
+.empty-state i {
+    font-size: 3em;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.empty-state p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,742 @@
+/* CSS Variables */
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #10b981;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --gray-color: #6b7280;
+    --light-gray: #e5e7eb;
+    --danger-color: #ef4444;
+    --sidebar-width: 280px; /* Lebar sidebar */
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #f5f7fa; /* Light grey background */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Dashboard Container Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles - Menggunakan gaya fixed dan variabel */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0; /* Padding vertikal 20px, horizontal 0 */
+    position: fixed; /* Sidebar tetap di tempatnya */
+    height: 100%; /* Mengambil tinggi penuh viewport */
+    top: 0; /* Posisikan di paling atas */
+    left: 0; /* Posisikan di paling kiri */
+    z-index: 1000; /* Pastikan sidebar di atas konten lain */
+}
+
+.profile-info {
+    text-align: center;
+    padding: 0 20px 20px; /* Padding dari kiri/kanan 20px, bawah 20px */
+    border-bottom: 1px solid var(--light-gray); /* Menggunakan variabel */
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover; /* Sesuai keinginan Anda untuk mengisi area */
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color); /* Menggunakan variabel */
+}
+
+.profile-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--dark-color); /* Menggunakan variabel */
+}
+
+.profile-info p {
+    font-size: 14px;
+    color: var(--gray-color); /* Menggunakan variabel */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 20px 0; /* Padding vertikal 20px untuk keseluruhan daftar menu */
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px; /* Padding lebih besar untuk link menu */
+    text-decoration: none;
+    color: var(--dark-color); /* Menggunakan variabel */
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav li.active a {
+    background-color: #f0f5ff; /* Warna latar belakang hover/active */
+    color: var(--primary-color); /* Menggunakan variabel */
+}
+
+.sidebar-nav i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: var(
+        --gray-color
+    ); /* Menggunakan variabel untuk warna ikon default */
+}
+
+.sidebar-nav a:hover i,
+.sidebar-nav li.active a i {
+    color: var(
+        --primary-color
+    ); /* Menggunakan variabel untuk warna ikon saat hover/active */
+}
+
+/* Main Content Styles - Disesuaikan untuk sidebar fixed */
+.main-content {
+    flex: 1; /* Mengambil sisa ruang horizontal */
+    margin-left: var(
+        --sidebar-width
+    ); /* PENTING: Memberikan ruang kosong di kiri seukuran sidebar */
+    padding: 30px; /* Padding di sekitar konten utama */
+}
+
+/* Main Header (Jika ada di dashboard.html) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    font-size: 24px;
+    color: var(--dark-color);
+}
+
+.search-notif {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 10px 15px 10px 40px;
+    border: 1px solid var(--light-gray);
+    border-radius: 6px;
+    width: 250px;
+    font-size: 14px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-color);
+}
+
+.notification {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification i {
+    font-size: 20px;
+    color: var(--gray-color);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stats Cards (Jika ada di dashboard.html) */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 20px;
+    color: white;
+}
+
+.stat-icon.blue {
+    background-color: #3b82f6;
+}
+
+.stat-icon.green {
+    background-color: var(--secondary-color);
+}
+
+.stat-icon.orange {
+    background-color: #f59e0b;
+}
+
+.stat-info h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.stat-info p {
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+/* Recent Orders (Jika ada di dashboard.html) */
+.recent-orders {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.recent-orders h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.recent-orders h2 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.orders-table {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+th {
+    background-color: #f9fafb;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status.proses {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status.dikirim {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.status.selesai {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.btn-detail {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s;
+}
+
+.btn-detail:hover {
+    background-color: #4338ca;
+}
+
+/* New Order Form (Jika ada di create_order.html) */
+.new-order-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.new-order-form h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.new-order-form h2 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--light-gray);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-reset {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Orders Page Specific Styles (from previous request) */
+.orders-section {
+    background-color: transparent; /* Ubah agar background body terlihat */
+    padding: 0; /* Hapus padding agar order-container yang mengatur */
+}
+
+.orders-container {
+    max-width: 1000px;
+    margin: 0 auto; /* Ini akan memusatkan di main-content */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.orders-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.orders-header h1 {
+    color: var(--primary-color); /* Menggunakan variabel */
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+.orders-header p {
+    color: var(--gray-color); /* Menggunakan variabel */
+    font-size: 1em;
+}
+
+.search-filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-filter-bar input[type="text"],
+.search-filter-bar select {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--light-gray); /* Menggunakan variabel */
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.search-filter-bar input:focus,
+.search-filter-bar select:focus {
+    border-color: var(--primary-color); /* Menggunakan variabel */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    outline: none;
+}
+
+.order-list {
+    display: grid;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.order-card-header h3 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #333;
+    font-weight: 600;
+}
+
+.order-card-header .order-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: white;
+}
+
+/* Status Colors (menggunakan variabel jika memungkinkan) */
+.status-pending {
+    background-color: var(
+        --secondary-color
+    ); /* Contoh: Ubah ke green jika suka */
+    /* atau biarkan #ffc107; */
+}
+.status-accepted {
+    background-color: var(
+        --secondary-color
+    ); /* Green, bisa juga dibuat berbeda */
+}
+.status-completed {
+    background-color: var(--primary-color); /* Blue */
+}
+.status-cancelled {
+    background-color: var(--danger-color); /* Red */
+}
+
+.order-card-body {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.order-card-body p {
+    margin-bottom: 8px;
+}
+
+.order-card-body strong {
+    color: #333;
+}
+
+.order-card-actions {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.order-card-actions .btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-detail {
+    background-color: var(--primary-color); /* Menggunakan variabel */
+    color: white;
+    border: none;
+}
+
+.btn-detail:hover {
+    background-color: #3e38c2;
+    transform: translateY(-1px);
+}
+
+.btn-cancel-order {
+    background-color: var(--danger-color); /* Menggunakan variabel */
+    color: white;
+    border: none;
+}
+
+.btn-cancel-order:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--light-color); /* Menggunakan variabel */
+    border-radius: 10px;
+    margin-top: 30px;
+    color: var(--gray-color); /* Menggunakan variabel */
+}
+.empty-state i {
+    font-size: 3em;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+.empty-state p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+.empty-state .btn-create {
+    background-color: var(--secondary-color); /* Menggunakan variabel */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+.empty-state .btn-create:hover {
+    background-color: #0b9f6e; /* Darker secondary */
+}
+
+/* Responsive Styles (Gabungan dan Penyesuaian) */
+@media (max-width: 992px) {
+    /* Untuk layar menengah (tablet) */
+    .sidebar {
+        width: var(--sidebar-width);
+    }
+    .main-content {
+        margin-left: var(--sidebar-width); /* Tetap sesuai lebar sidebar */
+        padding: 25px; /* Sedikit kurangi padding */
+    }
+    .search-box input {
+        width: 200px; /* Perkecil input search jika ada */
+    }
+    /* Orders page specific */
+    .orders-container {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Untuk layar kecil (mobile) */
+    .dashboard-container {
+        flex-direction: column; /* Sidebar dan konten utama bertumpuk */
+    }
+    .sidebar {
+        position: relative; /* Ubah sidebar menjadi relatif */
+        width: 100%;
+        height: auto;
+        padding: 15px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--light-gray);
+    }
+    .main-content {
+        margin-left: 0; /* Hapus margin kiri */
+        padding: 20px 15px; /* Padding di mobile */
+    }
+
+    /* Sidebar info profil horizontal di mobile */
+    .profile-info {
+        padding: 0 15px 15px;
+        border-bottom: none;
+        display: flex;
+        align-items: center;
+        text-align: left;
+    }
+    .profile-pic {
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+    .profile-info h3,
+    .profile-info p {
+        margin: 0;
+    }
+
+    .sidebar-nav ul {
+        display: none; /* Sembunyikan navigasi penuh */
+    }
+
+    /* Main header (jika ada) adjustments for mobile */
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .search-notif {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .search-box input {
+        width: 100%;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Orders page specific */
+    .orders-container {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .search-filter-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .order-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .order-card-header h3 {
+        font-size: 1.1em;
+    }
+    .order-card-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .order-card-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Untuk ponsel yang sangat kecil */
+    .profile-info {
+        flex-direction: column; /* Tumpuk kembali info profil */
+        text-align: center;
+        padding: 15px;
+    }
+    .profile-pic {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .main-content {
+        padding: 15px 10px;
+    }
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .stat-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    /* Orders page specific */
+    .orders-header h1 {
+        font-size: 1.8em;
+    }
+    .order-card {
+        padding: 15px;
+    }
+}
