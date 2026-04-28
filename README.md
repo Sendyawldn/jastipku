@@ -1,66 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# JastipKu
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+JastipKu adalah aplikasi web **jasa titip** berbasis Laravel yang mempertemukan:
+- **Penitip (customer)** untuk membuat pesanan barang.
+- **Traveler** untuk menerima, memproses, dan menyelesaikan pesanan.
+- **Admin** untuk mengelola data melalui panel Filament.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1) Fitur Penitip (Customer)
+- Registrasi/login akun.
+- Membuat pesanan baru dengan detail barang, budget, destinasi, deadline, metode pembayaran, dan lampiran foto.
+- Melihat, mengedit, membatalkan, serta melakukan reorder pesanan.
+- Melihat invoice dan riwayat transaksi.
+- Memberi rating/review ke traveler setelah pesanan selesai.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 2) Fitur Traveler
+- Melihat daftar pesanan aktif.
+- Menerima pesanan, memulai proses, menyelesaikan, atau membatalkan pesanan.
+- Melihat penghasilan dan riwayat penghasilan.
+- Melakukan penarikan saldo (withdrawal).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 3) Fitur Umum & Admin
+- Landing page publik dengan daftar pesanan.
+- Dashboard otomatis sesuai role setelah login.
+- Manajemen user/order/traveler profile/withdrawal melalui **Filament Admin Panel**.
 
-## Learning Laravel
+## Teknologi yang Digunakan
+- **Backend:** PHP 8.1+, Laravel 10
+- **Admin Panel:** Filament 3.3
+- **Frontend Build Tool:** Vite
+- **Frontend Library:** Alpine.js
+- **Database:** MySQL/MariaDB (disarankan)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Kebutuhan Sistem
+- PHP >= 8.1
+- Composer
+- Node.js + npm
+- Database server (MySQL/MariaDB)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalasi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone repository
+   ```bash
+   git clone <url-repo-anda>
+   cd jastipku
+   ```
 
-## Laravel Sponsors
+2. Install dependency PHP
+   ```bash
+   composer install
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. Install dependency frontend
+   ```bash
+   npm install
+   ```
 
-### Premium Partners
+4. Copy file environment
+   ```bash
+   cp .env.example .env
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+5. Generate app key
+   ```bash
+   php artisan key:generate
+   ```
 
-## Contributing
+6. Atur konfigurasi database di `.env`
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=jastipku
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. Jalankan migrasi
+   ```bash
+   php artisan migrate
+   ```
 
-## Code of Conduct
+8. (Opsional) jalankan seeder
+   ```bash
+   php artisan db:seed
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+9. Jalankan server aplikasi
+   ```bash
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+10. Jalankan Vite untuk asset frontend
+   ```bash
+   npm run dev
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Aplikasi akan tersedia di `http://127.0.0.1:8000`.
 
-## License
+## Struktur Peran Pengguna
+- `penitip` → pengguna yang membuat pesanan.
+- `traveler` → pengguna yang menerima/menjalankan pesanan.
+- `admin` → pengelola sistem dari panel admin.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Rute Penting
+- `/` : Landing page
+- `/dashboard` : Redirect dashboard sesuai role
+- `/customer/*` : Area penitip
+- `/traveler/*` : Area traveler
+- `/admin` : Panel admin Filament (default path)
+
+## Menjalankan Testing
+```bash
+php artisan test
+```
+
+## Catatan Pengembangan
+- Proyek ini menggunakan middleware role untuk pembatasan akses fitur.
+- Fitur upload gambar produk disimpan pada storage disk `public`.
+- Pastikan sudah menjalankan `php artisan storage:link` jika gambar tidak tampil.
+
+## Lisensi
+Proyek ini menggunakan lisensi [MIT](https://opensource.org/licenses/MIT).
